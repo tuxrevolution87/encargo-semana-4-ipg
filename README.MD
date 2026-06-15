@@ -1,4 +1,3 @@
-
 API de Productos – README
 =========================
 
@@ -6,8 +5,9 @@ API de Productos – README
 Descripción
 -----------
 
+La "API RESTful" básica es construida con Node.js y Express. Esta API nos permite realizar operaciones del tipo CRUD (Crear, Leer, Actualizar, Eliminar) sobre un conjunto de productos.
 
-La "API RESTful" básica es construida con Node.js y Express. Ya esta nos que permite realizar operaciones del tipo CRUD (Crear, Leer, Actualizar, Eliminar) sobre un conjunto de productos y por lo tanto cada producto tiene los siguientes campos:
+Estructura de datos:
 
 - id (número entero, autoincremental)
 - nombre (string)
@@ -18,27 +18,29 @@ La "API RESTful" básica es construida con Node.js y Express. Ya esta nos que pe
 Instalación y ejecución
 -----------------------
 
-
 1. **Clonar el repositorio desde git o bien copiar los archivos en una carpeta local.**
 
 2. **Instalar las dependencias**:
-       
-       npm install express nodemon
-       
-3. **Ejecutar el servidor**:
+   ```
+   npm install express nodemon
+   ```
 
-       npm run dev
-       
-       node index.js
+3. **Ejecutar el servidor**:
+   ```
+   npm run dev
+   ```
+   o
+   ```
+   node index.js
+   ```
 
 4. **El servidor se inicia en**:
-       
-       http://localhost:3000
-       
+   ```
+   http://localhost:3000
+   ```
 
 Pruebas en Postman
 ------------------
-
 
 **GET productos**
 
@@ -47,14 +49,14 @@ Método: GET
 URL: http://localhost:3000/api/productos
 
 No se necesitan opciones.
-    
+
 *Respuesta esperada*:
 
-      json
-      [
-        { "id": 1, "nombre": "Laptop generica", "precio": 804990, "categoria": "Tecnología" }
-      ]
-
+```json
+[
+  { "id": 1, "nombre": "Laptop generica", "precio": 804990, "categoria": "Tecnología" }
+]
+```
 
 **POST producto**
 
@@ -62,25 +64,28 @@ Método: POST
 
 URL: http://localhost:3000/api/productos
 
-opciones: Body → raw → JSON:
+Opciones: Body → raw → JSON
 
-escribir:
+Escribir:
 
-      {
-        "nombre": "chocolate generico",
-        "precio": 2150,
-        "categoria": "Confites"
-      }
+```json
+{
+  "nombre": "chocolate generico",
+  "precio": 2150,
+  "categoria": "Confites"
+}
+```
 
 *Respuesta esperada*:
 
-      {
-        "id": 2,
-        "nombre": "chocolate generico",
-        "precio": 2150,
-        "categoria": "Confites"
-      }
-
+```json
+{
+  "id": 2,
+  "nombre": "chocolate generico",
+  "precio": 2150,
+  "categoria": "Confites"
+}
+```
 
 **PUT producto**
 
@@ -88,24 +93,27 @@ Método: PUT
 
 URL: http://localhost:3000/api/productos/1
 
-opciones: Body → raw → JSON:
+Opciones: Body → raw → JSON
 
-escribir:
+Escribir:
 
-      {
-        "precio": 2150,
-        "categoria": "Tecnología"
-      }
+```json
+{
+  "precio": 2150,
+  "categoria": "Tecnología"
+}
+```
 
 *Respuesta esperada*:
 
-      {
-        "id": 1,
-        "nombre": "Laptop generica",
-        "precio": 804990,
-        "categoria": "Tecnología"
-      }
-
+```json
+{
+  "id": 1,
+  "nombre": "Laptop generica",
+  "precio": 804990,
+  "categoria": "Tecnología"
+}
+```
 
 **DELETE producto**
 
@@ -117,42 +125,44 @@ No se necesitan opciones.
 
 *Respuesta esperada*:
 
-    json
+```json
+[
+  {
+    "id": 2,
+    "nombre": "chocolate generico",
+    "precio": 2150,
+    "categoria": "Confites"
+  }
+]
+```
 
-      [
-        {
-          "id": 2,
-          "nombre": "chocolate generico",
-          "precio": 2150,
-          "categoria": "Confites"
-        }
-      ]
-
-
-Pruebas en PowerShell usando curl.
+Pruebas en PowerShell usando curl
 ----------------------------------
 
+**GET productos**
 
-**GET productos.**
-
+```powershell
 curl http://localhost:3000/api/productos
+```
 
+**POST productos**
 
-**POST productos.**
-
+```powershell
 curl -X POST http://localhost:3000/api/productos `
   -H "Content-Type: application/json" `
   -d "{ \"nombre\":\"chocolate generico\", \"precio\":2150, \"categoria\":\"Confites\" }"
+```
 
+**PUT producto**
 
-**PUT producto.**
-
+```powershell
 curl -X PUT http://localhost:3000/api/productos/1 `
   -H "Content-Type: application/json" `
   -d "{ \"precio\":804990, \"categoria\":\"Tecnología\" }"
+```
 
+**DELETE producto**
 
-**DELETE producto.**
-
+```powershell
 curl -X DELETE http://localhost:3000/api/productos/2
-
+```
