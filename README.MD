@@ -74,7 +74,7 @@ escribir:
 
 *Respuesta esperada*:
 
->      {
+      {
         "id": 2,
         "nombre": "chocolate generico",
         "precio": 2150,
